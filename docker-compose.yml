@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: . [cite_start]# [cite: 106]
+    ports:
+      - [cite_start]"3000:3000" # 
+    environment:
+      - [cite_start]DB_URL=mongodb://db:27017 # [cite: 108]
+    depends_on:
+      - db
+  
+  db:
+    [cite_start]image: mongo:latest # [cite: 109]
+    volumes:
+      - [cite_start]db_data:/data/db # [cite: 111]
+      - [cite_start]./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro # [cite: 110]
+
+volumes:
+  [cite_start]db_data: # [cite: 111]
